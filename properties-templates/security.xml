@@ -1,0 +1,13 @@
+<security>
+	<role rolename="STUDENT">
+		<permission object="Department" action="all" />
+		<permission object="AgendaRequest" action="all" />
+	</role>
+	<role rolename="PUBLICOFFICIAL">
+		<permission object="AgendaRequest" action="all" />
+		<permission object="CaseFile" action="all" />
+	</role>
+	
+	<userType userTypeName="STUDENT" roles="STUDENT"/>
+	<userType userTypeName="PUBLICOFFICIAL" roles="PUBLICOFFICIAL"/>
+</security>
