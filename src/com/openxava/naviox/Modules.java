@@ -63,6 +63,9 @@ public class Modules implements Serializable {
 		if (!NaviOXPreferences.getInstance().isStartInLastVisitedModule()) {
 			try {
 				getPreferences().remove("current");
+//				Preferences preferences = getPreferences();
+//		        preferences.remove("current");
+//		        preferences.flush();
 			} catch (BackingStoreException ex) {
 				log.warn(XavaResources.getString("current_module_problem"), ex);
 			}
@@ -313,7 +316,7 @@ public class Modules implements Serializable {
 				preferences.remove(prefix + "module." + i);
 			}
 			if (storeCurrent && !"SignIn".equals(current.getName())) {
-				preferences.put("current", current.getName());
+				// Consultorio Juridico preferences.put("current", current.getName());
 			}
 
 			preferences.flush();

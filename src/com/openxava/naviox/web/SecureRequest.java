@@ -12,6 +12,7 @@ public class SecureRequest extends HttpServletRequestWrapper {
 		super( (HttpServletRequest) request);
 	}
 	
+	
 	public String getRemoteUser() {			
 		return (String) ((HttpServletRequest) getRequest()).getSession().getAttribute("naviox.user");
 	}

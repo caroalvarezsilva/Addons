@@ -25,7 +25,7 @@ public class NaviOXServlet extends HttpServlet {
 		}
 		String url = Browsers.isMobile(request)?"/p/" + uri[3]:"/naviox/index.jsp?application=" + uri[1] + "&module=" + uri[3];
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);		
-		
+		response.setBufferSize(8192 * 16);
 		Style.setPotalInstance(NaviOXStyle.getInstance()); // We manage style in NaviOX as in the portal case, to override the style defined in xava.properties and by device 
 		dispatcher.forward(request, response);		
 	}

@@ -123,7 +123,7 @@ public class NaviOXPreferences {
 	 * @since 5.3
 	 */
 	public boolean isStartInLastVisitedModule() { 
-		return "true".equalsIgnoreCase(getProperties().getProperty("startInLastVisitedModule", "true").trim());
+		return "true".equalsIgnoreCase(getProperties().getProperty("startInLastVisitedModule", "false").trim());
 	}
 	
 	/**

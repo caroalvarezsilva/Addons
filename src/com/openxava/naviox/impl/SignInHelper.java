@@ -33,6 +33,12 @@ public class SignInHelper {
 		session.setAttribute("naviox.user", userName);
 		session.setAttribute("naviox.userType", userType);
 		Modules modules = (Modules) session.getAttribute("modules");
+		modules.reset();
+	}
+	
+	public static void signIn(HttpSession session, String userName) {
+		session.setAttribute("naviox.user", userName);
+		Modules modules = (Modules) session.getAttribute("modules");
 		modules.reset();		
 	}
 	
