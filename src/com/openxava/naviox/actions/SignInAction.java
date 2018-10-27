@@ -1,6 +1,7 @@
 package com.openxava.naviox.actions;
 
 import org.openxava.util.*;
+
 import com.openxava.naviox.impl.*;
 
 /**
@@ -22,6 +23,9 @@ public class SignInAction extends ForwardToOriginalURIBaseAction {
 		if (userName.equalsIgnoreCase("admin")) {
 			userType = "admin";
 			isAuthorized = SignInHelper.isAuthorized(userName, password);
+		} else if (Is.emptyString(userType)){
+			addError("empty_user_type"); 
+			return;
 		} else {
 			isAuthorized = SignInHelper.isAuthorized(userName, password, userType, getErrors());
 		}

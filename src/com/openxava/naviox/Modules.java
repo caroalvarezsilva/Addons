@@ -87,17 +87,20 @@ public class Modules implements Serializable {
 	public void setCurrent(String application, String module, boolean retainOrder) { 
 		this.current = MetaModuleFactory.create(application, module);
 		if (topModules == null) loadTopModules();	
-		int idx = indexOf(topModules, current); 
-		if (idx < 0) {
-			if (topModules.size() >= MODULES_ON_TOP) {
-				topModules.remove(topModules.size() - 1); 
-			}				
-			topModules.add(fixedModulesCount, current); 
-		}		
-		else if (!retainOrder && idx >= fixedModulesCount) { 
-			topModules.remove(idx);
-			topModules.add(fixedModulesCount, current); 
+		if (!ModulesHelper.isPublic(this.current.getName())) {
+			int idx = indexOf(topModules, current); 
+			if (idx < 0) {
+				if (topModules.size() >= MODULES_ON_TOP) {
+					topModules.remove(topModules.size() - 1); 
+				}				
+				topModules.add(fixedModulesCount, current); 
+			}		
+			else if (!retainOrder && idx >= fixedModulesCount) { 
+				topModules.remove(idx);
+				topModules.add(fixedModulesCount, current); 
+			}	
 		}
+		
 		storeTopModules();
 	}
 
@@ -288,8 +291,6 @@ public class Modules implements Serializable {
 	}
 
 	private boolean isModuleAuthorized(HttpServletRequest request, MetaModule module) {
-		if (request != null && ModulesHelper.isPublic(request, module.getName()))
-			return true;
 		return Collections.binarySearch(getAll(), module, comparator) >= 0;
 	}
 
@@ -322,7 +323,7 @@ public class Modules implements Serializable {
 			preferences.flush();
 		} catch (Exception ex) {
 			log.warn(XavaResources.getString("storing_modules_problem"), ex);
-		}
+		} 
 	}
 
 	private Preferences getPreferences() throws BackingStoreException {
@@ -389,6 +390,7 @@ public class Modules implements Serializable {
 			}
 		}
 		if (allowedModules == null) {
+			//Consultorio Juridico
 			// allowedModules = ModulesHelper.getAllowedModules()
 		}
 		return all;
