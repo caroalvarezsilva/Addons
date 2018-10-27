@@ -54,6 +54,10 @@ public class ModulesHelper {
 		return "FirstSteps".equals(moduleName); 
 	}
 	
+	public static boolean isPublic(String moduleName) { 
+		return "FirstSteps".equals(moduleName); 
+	}
+	
 	public static boolean showsIndexLink() { 
 		return false;
 	}	
