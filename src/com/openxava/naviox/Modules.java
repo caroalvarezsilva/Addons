@@ -63,9 +63,6 @@ public class Modules implements Serializable {
 		if (!NaviOXPreferences.getInstance().isStartInLastVisitedModule()) {
 			try {
 				getPreferences().remove("current");
-//				Preferences preferences = getPreferences();
-//		        preferences.remove("current");
-//		        preferences.flush();
 			} catch (BackingStoreException ex) {
 				log.warn(XavaResources.getString("current_module_problem"), ex);
 			}
@@ -366,9 +363,7 @@ public class Modules implements Serializable {
 			List<MetaModule> modules = new ArrayList<MetaModule>();
 			return modules;
 		}
-		if (Users.getCurrentUserInfo().getUserType().equalsIgnoreCase("admin")) { 
-			return all;
-		}
+	
 		List<String> allowedSecurityModules = Security.getModulesAllowed();
 		for (String module : allowedSecurityModules) {
 			MetaModule metaModule = getModuleByName(module);

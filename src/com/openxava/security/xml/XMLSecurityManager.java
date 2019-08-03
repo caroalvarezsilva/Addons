@@ -142,16 +142,6 @@ public class XMLSecurityManager implements SecurityManager {
 		}
 	}
 
-//	@Override
-//	public boolean validUser(String username, String password) {
-//		if (Is.empty(password) || Is.empty(username))
-//			return false;
-//		User user = users.get(username);
-//		if (user == null)
-//			return false;
-//		return password.equals(user.getPassword());
-//	}
-
 	public UserType getUserType(String userTypeName) {
 		if (Is.empty(userTypeName))
 			return null;
@@ -227,8 +217,6 @@ public class XMLSecurityManager implements SecurityManager {
 			permissions = loadPermissions(userType);
 		}
 		return new ArrayList<String>(permissions.keySet());
-		
-
 	}
 
 }

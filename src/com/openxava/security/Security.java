@@ -36,12 +36,6 @@ public class Security {
   public static String getCurrentUserType() {
 	    return Users.getCurrentUserInfo().getUserType();
 	  }
-
-//  public static boolean validUser(String username, String password) {
-//    SecurityManager sm = getSecurityManager();
-//    if (sm==null) return false;
-//    return sm.validUser(username, password);
-//  }
   
   private static SecurityManager getSecurityManager() {
     if (securityManager == null) {
