@@ -10,4 +10,5 @@
 	
 	<userType userTypeName="STUDENT" roles="STUDENT"/>
 	<userType userTypeName="PUBLICOFFICIAL" roles="PUBLICOFFICIAL"/>
+	<userType userTypeName="ADMIN" roles="PUBLICOFFICIAL"/>
 </security>
